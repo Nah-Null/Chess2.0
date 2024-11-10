@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  
+  background-color: #f4f4f4;
+}
+h1 {
+  margin-bottom: 20px; /* Add space below the heading */
+  font-size: 36px;
+  text-align: center;
+}
+table {
+  border-collapse: collapse;
+  
+  
+}
+td {
+  position: flex;
+  width: 60px;
+  height: 60px;
+  border: 5px solid #333;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 36px;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+.row1 {
+    border-top-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.row2 {
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.row3{
+    
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.row4{
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.row5 {
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.row6{
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.row7{
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.row8{
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+
+.validCell{
+    background-color: #ffc779;
+}
+
+.toBeKill{
+  background-color: #ff6b7f;
+}
+
+.validCell {
+  background-color: lightgreen;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toBeKill {
+  background-color: red;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ninja, .pawn {
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.cell-container {
+  position: relative;
+  width: 100px; /* Adjust as per your cell size */
+  height: 100px;
+}
+ 
