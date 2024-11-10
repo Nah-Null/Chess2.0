@@ -54,9 +54,12 @@ const Game = () => {
 
   const [board, setBoard] = useState(initialBoard);
   const [selectedPiece, setSelectedPiece] = useState(null);
+  // const [Pawnmove, setPawnmove] = useState(null);
   const [Row, setRow] = useState(7);
   const [Col, setCol] = useState(3);
   const [validMoves, setValidMoves] = useState([]);
+  const [pawnRow, setPawnRow] = useState();
+  const [pawnCol, setPawnCol] = useState();
 
   const calculateValidMoves = (piece, row, col) => {
     const moves = [];
@@ -213,16 +216,30 @@ const Game = () => {
       if(newBoard[toRow][toCol] == 'Kill'){
         console.log('kill ninja')
         newBoard = placeRandomEnemy(newBoard)
+      }else{
+        const CV_p =  calculateValidMoves('Knight',pawnRow,pawnCol);
+        newBoard = enemymove(CV_p, newBoard)
       }
       newBoard[toRow][toCol] = selectedPiece.piece;
+
       setRow(toRow);
       setCol(toCol);
       setBoard(newBoard);
       setSelectedPiece(null);
-      alert("test");
       setValidMoves([]);
     }
   };
+
+  const enemymove = (validMove, newBoard) => {
+    const randomIndex = Math.floor(Math.random() * validMove.length);
+    const randomMove = validMove[randomIndex]
+    console.log('randomMove', randomMove)
+    newBoard[pawnRow][pawnCol] = null
+    newBoard[randomMove[0]][randomMove[1]] = "Enemy"
+    setPawnRow(randomMove[0])
+    setPawnCol(randomMove[1])
+    return newBoard;
+  }
 
   useEffect(() => {
     initialGame()
@@ -242,11 +259,16 @@ const Game = () => {
     console.log('random row pass')
     const randomCol = Math.floor(Math.random() * board[0].length); // Random column
     console.log('random col pass')
+
     
     while (newBoard[randomRow][randomCol] !== null) { // If cell is not empty, retry
       randomRow = Math.floor(Math.random() * board.length);
       randomCol = Math.floor(Math.random() * board[0].length);
     }
+
+    setPawnRow(randomRow);
+    setPawnCol(randomCol);
+    
     console.log('set pass')
 
     console.log('random enemy on:' ,[randomRow, randomCol]);
