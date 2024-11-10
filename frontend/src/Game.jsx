@@ -219,6 +219,7 @@ const Game = () => {
       setCol(toCol);
       setBoard(newBoard);
       setSelectedPiece(null);
+      alert("test");
       setValidMoves([]);
     }
   };
